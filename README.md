@@ -1,27 +1,23 @@
-# gulp-html-lint
-
-[![Travis build status](https://travis-ci.org/coditorium/gulp-html-lint.png?branch=master)](https://travis-ci.org/coditorium/gulp-html-lint)
-[![dependencies](https://david-dm.org/coditorium/gulp-html-lint.png)](https://david-dm.org/coditorium/gulp-html-lint)
-<!---
-[![Coverage Status](https://coveralls.io/repos/coditorium/gulp-html-lint/badge.svg)](https://coveralls.io/r/coditorium/gulp-html-lint)
---->
-
-[![NPM info](https://nodei.co/npm/read-config.png?downloads=true)](https://www.npmjs.com/package/read-config)
+# @yodasws/gulp-htmllint
 
 This is a gulp plugin for [HTMLLint](https://github.com/htmllint/htmllint/).
 Its interface was created to be similar to [gulp-eslint](https://github.com/adametry/gulp-eslint).
 
 ## Intallation
 
-```sh
-npm install --save gulp-html-lint
+```bash
+yarn add @yodasws/gulp-htmllint
+```
+
+```bash
+npm install --save @yodasws/gulp-htmllint
 ```
 
 ## Sample usage
 
 ```js
 var gulp = require('gulp'),
-	htmlLint = require('gulp-html-lint');
+	htmlLint = require('@yodasws/gulp-htmllint');
 
 gulp.task('html', function() {
     return gulp.src('site/**/*.html')

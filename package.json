@@ -1,35 +1,35 @@
 {
-  "author": "Paweł Mendelski <pawel.mendelski@coditorium.com>",
-  "name": "gulp-html-lint",
-  "version": "0.0.2",
+  "author": [
+	  "Paweł Mendelski <pawel.mendelski@coditorium.com>",
+	  "Sam Grundman <sam+github@yodas.ws"
+  ],
+  "name": "@yodasws/gulp-htmllint",
+  "version": "0.0.3",
   "description": "Gulp plugin for htmllint",
   "main": "index.js",
   "license": "MIT",
-  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/coditorium/gulp-html-lint.git"
+    "url": "https://github.com/YodasWs/gulp-html-lint.git"
   },
   "bugs": {
-    "url": "https://github.com/coditorium/gulp-html-lint/issues"
+    "url": "https://github.com/YodasWs/gulp-html-lint/issues"
   },
   "scripts": {
     "start": "index.js",
     "test": "gulp lint test",
-    "ci": "gulp ci",
-    "coveralls": "cat build/test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "ci": "gulp ci"
   },
   "keywords": [
-    "coditorium",
     "gulp",
     "htmllint",
     "html lint"
   ],
   "engines": {
-    "node": ">=5.0.0"
+    "node": ">=7.0.0"
   },
   "dependencies": {
-    "htmllint": "^0.6.0",
+    "htmllint": "<1.0.0",
     "text-table": "^0.2.0",
     "through2": "^2.0.1"
   },
