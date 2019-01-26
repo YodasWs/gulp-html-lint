@@ -104,5 +104,5 @@ gulp.task('test-cov', (done) => {
 		});
 });
 
-gulp.task('default', sync(['clean', 'lint', 'test']));
-gulp.task('ci', sync(['clean', 'lint', 'test-cov']));
+gulp.task('default', gulp.series('clean', 'lint', 'test'));
+gulp.task('ci', gulp.series('clean', 'lint', 'test-cov'));

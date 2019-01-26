@@ -1,10 +1,10 @@
 {
   "author": [
 	  "Paweł Mendelski <pawel.mendelski@coditorium.com>",
-	  "Sam Grundman <sam+github@yodas.ws"
+	  "Sam Grundman <sam+github@yodas.ws>"
   ],
   "name": "@yodasws/gulp-htmllint",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Gulp plugin for htmllint",
   "main": "index.js",
   "license": "MIT",
@@ -29,12 +29,13 @@
     "node": ">=7.0.0"
   },
   "dependencies": {
-    "htmllint": "<1.0.0",
+    "@yodasws/htmllint": "<2.0.0",
     "text-table": "^0.2.0",
     "through2": "^2.0.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-eslint": "^2.0.0",
     "gulp-if": "^2.0.0",
     "gulp-istanbul": "^0.10.4",
