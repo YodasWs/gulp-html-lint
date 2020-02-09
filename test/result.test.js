@@ -94,7 +94,7 @@ describe('gulp-html-lint result', () => {
 	});
 
 	it('should support an async result handler', (done) => {
-		let asyncComplete = false, stream;
+		let asyncComplete = false;
 		const file = new File({
 				path: 'test/fixtures/invalid.js',
 				contents: new Buffer('#invalid!syntax}')
@@ -106,7 +106,7 @@ describe('gulp-html-lint result', () => {
 			resultStub = {};
 		file.htmlLint = resultStub;
 
-		stream = htmllint.result((result, callback) => {
+		const stream = htmllint.result((result, callback) => {
 			expect(result).to.exist;
 			expect(result).to.be.equal(resultStub);
 			expect(typeof callback).to.be.equal('function');

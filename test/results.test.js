@@ -82,7 +82,7 @@ describe('gulp-html-lint results', () => {
 		});
 
 		htmllint
-			.results((r) => {
+			.results(() => {
 				throw new Error('Expected no call');
 			})
 			.on('error', function(err) {
@@ -94,7 +94,7 @@ describe('gulp-html-lint results', () => {
 	});
 
 	it('should support an async result handler', (done) => {
-		let asyncComplete = false, stream;
+		let asyncComplete = false;
 		const file = new File({
 				path: 'test/fixtures/invalid.js',
 				contents: new Buffer('#invalid!syntax}')
@@ -106,7 +106,7 @@ describe('gulp-html-lint results', () => {
 			resultStub = {};
 		file.htmlLint = resultStub;
 
-		stream = htmllint.results((results, callback) => {
+		const stream = htmllint.results((results, callback) => {
 			expect(results).to.exist;
 			expect(results).to.be.instanceof(Array).with.a.lengthOf(1);
 			expect(results[0]).to.be.equal(resultStub);
