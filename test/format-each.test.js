@@ -6,16 +6,16 @@ const File = require('vinyl'),
 	filesWithoutDoctype = () => [
 		new File({
 			path: 'test/no-doctype-1.html',
-			contents: new Buffer('<p>no-doctype-1</p>')
+			contents: new Buffer('<p>no-doctype-1</p>'),
 		}),
 		new File({
 			path: 'test/no-doctype-2.html',
-			contents: new Buffer('<p>no-doctype-2</p>')
+			contents: new Buffer('<p>no-doctype-2</p>'),
 		}),
 		new File({
 			path: 'test/no-doctype-3.html',
-			contents: new Buffer('<p>no-doctype-3</p>')
-		})
+			contents: new Buffer('<p>no-doctype-3</p>'),
+		}),
 	];
 
 describe('gulp-html-lint format', () => {
@@ -46,8 +46,8 @@ describe('gulp-html-lint format', () => {
 		const lintStream = htmllint({
 				rules: {
 					'doctype-first': true,
-					'line-end-style': false
-				}
+					'line-end-style': false,
+				},
 			}),
 			formatStream = htmllint.format(formatResults, outputWriter)
 				.on('error', done)
@@ -69,8 +69,8 @@ describe('gulp-html-lint format', () => {
 	it('should not attempt to format when no linting results are found', (done) => {
 		const lintStream = htmllint({
 				rules: {
-					'line-end-style': false
-				}
+					'line-end-style': false,
+				},
 			}),
 			formatStream = htmllint.format(formatResults, outputWriter)
 				.on('error', done)

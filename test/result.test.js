@@ -11,8 +11,8 @@ describe('gulp-html-lint result', () => {
 		const lintStream = htmllint({
 			useHtmllintrc: false,
 			rules: {
-				'attr-quote-style': 'single'
-			}
+				'attr-quote-style': 'single',
+			},
 		});
 		let resultCount = 0;
 
@@ -30,17 +30,17 @@ describe('gulp-html-lint result', () => {
 
 		lintStream.write(new File({
 			path: 'test/invalid-1.html',
-			contents: new Buffer('<a href="#test"></a>')
+			contents: new Buffer('<a href="#test"></a>'),
 		}));
 
 		lintStream.write(new File({
 			path: 'test/invalid-2.html',
-			contents: new Buffer('<a href="#test2"></a>')
+			contents: new Buffer('<a href="#test2"></a>'),
 		}));
 
 		lintStream.write(new File({
 			path: 'test/invalid-3.html',
-			contents: new Buffer('<a href="#test3"></a>')
+			contents: new Buffer('<a href="#test3"></a>'),
 		}));
 
 		lintStream.end();
@@ -49,7 +49,7 @@ describe('gulp-html-lint result', () => {
 	it('should catch thrown errors', (done) => {
 		const file = new File({
 				path: 'test/sample.html',
-				contents: new Buffer('<p>test</p>')
+				contents: new Buffer('<p>test</p>'),
 			}), finished = () => {
 				done(new Error('Unexpected Finish'));
 			};
@@ -78,7 +78,7 @@ describe('gulp-html-lint result', () => {
 	it('should ignore files without a htmllint result', (done) => {
 		const file = new File({
 			path: 'test/fixtures/invalid.js',
-			contents: new Buffer('#invalid!syntax}')
+			contents: new Buffer('#invalid!syntax}'),
 		});
 
 		htmllint
@@ -97,7 +97,7 @@ describe('gulp-html-lint result', () => {
 		let asyncComplete = false;
 		const file = new File({
 				path: 'test/fixtures/invalid.js',
-				contents: new Buffer('#invalid!syntax}')
+				contents: new Buffer('#invalid!syntax}'),
 			}),
 			ended = () => {
 				expect(asyncComplete).to.be.true;

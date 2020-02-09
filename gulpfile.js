@@ -18,15 +18,15 @@ const pkg = require('./package'),
 			file: 'f',
 			grep: 'g',
 			debug: 'd',
-			bail: 'b'
-		}
+			bail: 'b',
+		},
 	});
 
 // Print banner
 glog([
 	fs.readFileSync('.banner', 'utf8'),
 	`${pkg.name} v${pkg.version}`,
-	pkg.description
+	pkg.description,
 ].join('\n'));
 
 argv.debug && glog('Paremeters:', argv);
@@ -51,7 +51,7 @@ gulp.task('lint', () => {
 	const src = argv.file || [
 		'**/*.js',
 		'!node_modules/**/*',
-		'!build/**/*'
+		'!build/**/*',
 	];
 	argv.debug && glog('Running code lint on:', src);
 	return gulp.src(src)
@@ -70,7 +70,7 @@ gulp.task('test', () => {
 			reporter: 'mocha-jenkins-reporter',
 			debug: argv.debug,
 			grep: argv.grep,
-			bail: argv.bail
+			bail: argv.bail,
 		}));
 });
 
@@ -79,7 +79,7 @@ gulp.task('test-cov', (done) => {
 	mkdirp.sync('./build/test/coverage');
 	gulp.src('lib/**/*.js')
 		.pipe(istanbul({
-			includeUntested: true
+			includeUntested: true,
 		}))
 		.pipe(istanbul.hookRequire())
 		.on('finish', () => {
@@ -91,12 +91,12 @@ gulp.task('test-cov', (done) => {
 					reporter: 'mocha-jenkins-reporter',
 					debug: argv.debug,
 					grep: argv.grep,
-					bail: argv.bail
+					bail: argv.bail,
 				}))
 				.pipe(istanbul.writeReports({
 					dir: './build/test/coverage',
 					reporters: ['lcov', 'json', 'text', 'text-summary', 'cobertura'],
-					reportOpts: { dir: './build/test/coverage' }
+					reportOpts: { dir: './build/test/coverage' },
 				}))
 				.on('end', done);
 		});

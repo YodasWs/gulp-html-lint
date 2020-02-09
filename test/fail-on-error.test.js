@@ -10,15 +10,15 @@ describe('gulp-html-lint failOnError', () => {
 		const lintStream = htmllint({
 				rules: {
 					'doctype-first': true,
-					'line-end-style': false
-				}
+					'line-end-style': false,
+				},
 			}),
 			endWithoutError = () => {
 				done(new Error('An error was not thrown before ending'));
 			},
 			file = new File({
 				path: 'test/invalid.html',
-				contents: new Buffer('<p>invalid</p>')
+				contents: new Buffer('<p>invalid</p>'),
 			});
 
 		lintStream
@@ -41,12 +41,12 @@ describe('gulp-html-lint failOnError', () => {
 		const lintStream = htmllint({
 				rules: {
 					'doctype-first': true,
-					'line-end-style': false
-				}
+					'line-end-style': false,
+				},
 			}),
 			file = new File({
 				path: 'test/valid.html',
-				contents: new Buffer('<!DOCTYPE>\n<p>valid</p>')
+				contents: new Buffer('<!DOCTYPE>\n<p>valid</p>'),
 			});
 
 		lintStream
