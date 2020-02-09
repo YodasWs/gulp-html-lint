@@ -1,6 +1,3 @@
-/**
- * Sam Grundman's Super Awesome Gulp Web Development Toolset
- */
 'use strict';
 
 const gulp = require('gulp');
@@ -50,7 +47,7 @@ const options = {
 	},
 };
 
-	plugins.newFile('index.html', `<!DOCTYPE html>
+plugins.newFile('index.html', `<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Test</title>
@@ -58,5 +55,5 @@ const options = {
 <body>
 </body>
 </html>`, { src: true })
-		.pipe(plugins.lintHTML(options.lintHTML))
-		.pipe(plugins.lintHTML.format());
+	.pipe(plugins.lintHTML(options.lintHTML))
+	.pipe(plugins.lintHTML.format());
