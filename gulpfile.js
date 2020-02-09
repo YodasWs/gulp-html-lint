@@ -3,7 +3,7 @@
 const pkg = require('./package'),
 	gulp = require('gulp'),
 	gulpif = require('gulp-if'),
-	gutil = require('gulp-util'),
+	glog = require('fancy-log'),
 	eslint = require('gulp-eslint'),
 	mocha = require('gulp-mocha'),
 	istanbul = require('gulp-istanbul'),
@@ -11,7 +11,6 @@ const pkg = require('./package'),
 	path = require('path'),
 	fs = require('fs'),
 	del = require('del'),
-	_ = require('lodash'),
 	argv = require('minimist')(process.argv.slice(2), {
 		boolean: ['debug', 'bail'],
 		string: ['file', 'grep'],
@@ -24,13 +23,13 @@ const pkg = require('./package'),
 	});
 
 // Print banner
-gutil.log([
+glog([
 	fs.readFileSync('.banner', 'utf8'),
 	`${pkg.name} v${pkg.version}`,
 	pkg.description
-].map(_.unary(gutil.colors.green)).join('\n'));
+].join('\n'));
 
-argv.debug && gutil.log('Paremeters:', argv);
+argv.debug && glog('Paremeters:', argv);
 
 function initTestMode() {
 	global.testMode = 'unit';
@@ -43,7 +42,7 @@ function initTestMode() {
 
 gulp.task('clean', (done) => {
 	del(['build']).then((paths) => {
-		argv.debug && paths.length && gutil.log('Deleted files/folders:\n', paths.join('\n'));
+		argv.debug && paths.length && glog('Deleted files/folders:\n', paths.join('\n'));
 		done();
 	});
 });
@@ -54,7 +53,7 @@ gulp.task('lint', () => {
 		'!node_modules/**/*',
 		'!build/**/*'
 	];
-	argv.debug && gutil.log('Running code lint on:', src);
+	argv.debug && glog('Running code lint on:', src);
 	return gulp.src(src)
 		.pipe(eslint())
 		.pipe(gulpif(!argv.bail, eslint.format()))
@@ -64,7 +63,7 @@ gulp.task('lint', () => {
 
 gulp.task('test', () => {
 	const testSrc = argv.file || 'test/**/*.test.js';
-	argv.debug && gutil.log('Running unit tests for:', testSrc);
+	argv.debug && glog('Running unit tests for:', testSrc);
 	initTestMode();
 	return gulp.src(testSrc)
 		.pipe(mocha({
@@ -86,7 +85,7 @@ gulp.task('test-cov', (done) => {
 		.on('finish', () => {
 			const testSrc = argv.file || 'test/**/*.test.js';
 			initTestMode();
-			argv.debug && gutil.log('Running instrumented unit tests for:', testSrc);
+			argv.debug && glog('Running instrumented unit tests for:', testSrc);
 			gulp.src(testSrc)
 				.pipe(mocha({
 					reporter: 'mocha-jenkins-reporter',
