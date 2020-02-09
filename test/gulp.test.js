@@ -1,7 +1,5 @@
 'use strict';
 
-const gulp = require('gulp');
-
 const plugins = {
 	lintHTML: require('../index.js'),
 	newFile: require('gulp-file'),
@@ -30,7 +28,7 @@ const options = {
 			'input-radio-req-name': true,
 			'input-req-label': true,
 			'label-req-for': true,
-			'line-end-style': 'lf',
+			'line-end-style': false,
 			'spec-char-escape': false, // buggy, no need to escape & in URL queries
 			'table-req-caption': false,
 			'table-req-header': false, // buggy, see https://github.com/htmllint/htmllint/issues/197
@@ -51,6 +49,12 @@ plugins.newFile('index.html', `<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Test</title>
+<style>
+body {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+</style>
 </head>
 <body>
 </body>

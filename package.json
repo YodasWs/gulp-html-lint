@@ -4,7 +4,7 @@
     "Sam Grundman <sam+github@yodas.ws>"
   ],
   "name": "@yodasws/gulp-htmllint",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Gulp plugin for htmllint",
   "main": "index.js",
   "license": "MIT",
@@ -45,6 +45,7 @@
     "gulp-mocha": "^2.2.0",
     "minimist": "^1.2.0",
     "mocha-jenkins-reporter": "^0.2.2",
-    "plugin-error": "^1.0.1"
+    "plugin-error": "^1.0.1",
+    "strip-ansi": "^6.0.0"
   }
 }
